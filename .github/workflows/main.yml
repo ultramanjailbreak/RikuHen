@@ -1,0 +1,42 @@
+name: Build RikuHen
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build with PS4 Payload SDK
+        uses: Scene-Collective/ps4-payload-sdk@v1
+        with:
+          app_path: .
+          build_command: make
+
+      - name: Verify build output
+        run: |
+          echo "=== Repository files ==="
+          find . -maxdepth 3 -type f -print
+
+          echo ""
+          echo "=== Checking payload ==="
+          test -f ./RikuHen.bin
+
+          echo ""
+          echo "=== Payload information ==="
+          ls -lh ./RikuHen.bin
+          file ./RikuHen.bin
+
+      - name: Upload payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: RikuHen-payload
+          path: ./RikuHen.bin
+          if-no-files-found: error

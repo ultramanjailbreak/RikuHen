@@ -1,0 +1,16 @@
+{
+  "title": "RikuHen",
+  "version": "1.0.0",
+  "updated": "2026-09-21T00:00:00Z",
+  "device": "PlayStation 4",
+  "firmware": "",
+  "description": {
+    "default": "Sends a single notification: ★RikuHen★",
+    "en": "Sends a single notification: ★RikuHen★"
+  },
+  "author": "riku",
+  "url": "https://github.com/TARGET/RikuHen",
+  "redirect": false,
+  "reload": false,
+  "offline": true
+}

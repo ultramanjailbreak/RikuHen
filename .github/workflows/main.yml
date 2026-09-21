@@ -1,3 +1,4 @@
+```yaml
 name: Build RikuHen
 
 on:
@@ -15,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build with PS4 Payload SDK
-        uses: Scene-Collective/ps4-payload-sdk@v1
+        uses: Scene-Collective/ps4-payload-sdk@v1.0.0
         with:
           app_path: .
           build_command: make
@@ -27,7 +28,10 @@ jobs:
 
           echo ""
           echo "=== Checking payload ==="
-          test -f ./RikuHen.bin
+          if [ ! -f "./RikuHen.bin" ]; then
+            echo "ERROR: RikuHen.bin was not created."
+            exit 1
+          fi
 
           echo ""
           echo "=== Payload information ==="
@@ -40,3 +44,4 @@ jobs:
           name: RikuHen-payload
           path: ./RikuHen.bin
           if-no-files-found: error
+```

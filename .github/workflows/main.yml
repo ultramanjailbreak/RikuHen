@@ -1,4 +1,3 @@
-```yaml
 name: Build RikuHen
 
 on:
@@ -44,4 +43,3 @@ jobs:
           name: RikuHen-payload
           path: ./RikuHen.bin
           if-no-files-found: error
-```
